@@ -1,12 +1,17 @@
 package shouse.core.node;
 
+import shouse.core.communication.Packet;
+import shouse.core.node.request.NodeRequest;
+import shouse.core.node.response.NodeResponse;
+
 /**
- * Created by maks on 20.12.17.
+ * Core part.
+ * Represents particular node. Implementations are responsible for all logic
  */
 public interface Node {
 
-    void process(NodeRequest request);
+    NodeResponse process(NodeRequest request);
 
-    NodeResponse getState();
+    void update(Packet packet);
 
 }
