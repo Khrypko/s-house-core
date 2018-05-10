@@ -7,6 +7,7 @@ import shouse.core.communication.Packet;
 import shouse.core.node.request.NodeRequest;
 import shouse.core.node.response.Message;
 import shouse.core.node.response.ResponseBody;
+import shouse.core.node.storage.NodeStorage;
 
 import java.util.Set;
 import java.util.logging.Logger;
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
 /**
  * Created by maks on 20.12.17.ddddddd
  */
-public class ControllerImpl implements Controller, Runnable, RequestDispatcher{
+public class ControllerImpl implements Controller, RequestDispatcher{
 
     //TODO: add logger
     private static final Logger LOGGER = Logger.getLogger(ControllerImpl.class.getName());
@@ -25,10 +26,10 @@ public class ControllerImpl implements Controller, Runnable, RequestDispatcher{
     private Set<RequestProcessor> processors;
     private NodeContainer nodeContainer;
 
-    public ControllerImpl(Set<Communicator> communicators, Set<RequestProcessor> processors, NodeContainer nodeContainer) {
+    public ControllerImpl(Set<Communicator> communicators, Set<RequestProcessor> processors, NodeStorage nodeStorage) {
         this.communicators = communicators;
         this.processors = processors;
-        this.nodeContainer = nodeContainer;
+        this.nodeContainer = new NodeContainer(nodeStorage);
     }
 
     @Override
