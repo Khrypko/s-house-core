@@ -1,4 +1,4 @@
-package shouse.core;
+package shouse.core.node.storage;
 
 import shouse.core.node.Node;
 
