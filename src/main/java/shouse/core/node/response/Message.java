@@ -3,7 +3,7 @@ package shouse.core.node.response;
 /**
  * Defines structure for response
  */
-public class NodeResponse {
+public class Message {
 
     private long nodeId;
     private ResponseStatus status;
@@ -31,5 +31,12 @@ public class NodeResponse {
 
     public void setData(ResponseBody data) {
         this.data = data;
+    }
+
+    public static Message error(ResponseBody body){
+        Message response = new Message();
+        response.setStatus(ResponseStatus.FAILURE);
+        response.setData(body);
+        return response;
     }
 }
