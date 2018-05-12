@@ -4,7 +4,8 @@ import shouse.core.api.RequestDispatcher;
 import shouse.core.api.RequestProcessor;
 import shouse.core.communication.Communicator;
 import shouse.core.communication.Packet;
-import shouse.core.node.request.NodeRequest;
+import shouse.core.communication.PacketProcessor;
+import shouse.core.node.request.Request;
 import shouse.core.node.response.Message;
 import shouse.core.node.response.ResponseBody;
 import shouse.core.node.storage.NodeStorage;
@@ -24,12 +25,12 @@ public class ControllerImpl implements Controller, RequestDispatcher{
     private boolean running;
     private Set<Communicator> communicators;
     private Set<RequestProcessor> processors;
-    private NodeContainer nodeContainer;
+    private Set<PacketProcessor> packetProcessors;
 
-    public ControllerImpl(Set<Communicator> communicators, Set<RequestProcessor> processors, NodeStorage nodeStorage) {
+    public ControllerImpl(Set<Communicator> communicators, Set<RequestProcessor> processors, Set<PacketProcessor> packetProcessors) {
         this.communicators = communicators;
         this.processors = processors;
-        this.nodeContainer = new NodeContainer(nodeStorage);
+        this.packetProcessors = packetProcessors;
     }
 
     @Override
@@ -58,11 +59,14 @@ public class ControllerImpl implements Controller, RequestDispatcher{
     }
 
     private void processPacket(Packet packet) {
-        nodeContainer.getNode(packet.getNodeId()).ifPresent(node -> node.update(packet));
+        packetProcessors.stream()
+                .filter(processor -> processor.isApplicable(packet))
+                .findAny()
+                .ifPresent( packetProcessor -> packetProcessor.processPacket(packet));
     }
 
     @Override
-    public Message processRequest(NodeRequest request){
+    public Message dispatchRequest(Request request){
         return processors.stream()
                 .filter(processor -> processor.isApplicable(request))
                 .findAny()
@@ -70,7 +74,7 @@ public class ControllerImpl implements Controller, RequestDispatcher{
                 .orElse(couldNotProcessRequest(request));
     }
 
-    private Message couldNotProcessRequest(NodeRequest request) {
+    private Message couldNotProcessRequest(Request request) {
         LOGGER.warning(COULD_NOT_PROCESS_THE_REQUEST.concat(". ").concat(request.toString()));
         return Message.error(couldNotProcess());
     }
