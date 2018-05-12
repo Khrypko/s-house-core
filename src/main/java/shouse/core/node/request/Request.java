@@ -34,4 +34,12 @@ public class Request {
     public void setNotifier(Notifier notifier) {
         this.notifier = notifier;
     }
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "nodeId=" + nodeId +
+                ", body=" + body.toString() +
+                '}';
+    }
 }

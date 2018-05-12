@@ -13,4 +13,10 @@ public class RequestBody {
         return parameters.get(paramName);
     }
 
+    @Override
+    public String toString() {
+        return "RequestBody{" +
+                "parameters=" + parameters +
+                '}';
+    }
 }

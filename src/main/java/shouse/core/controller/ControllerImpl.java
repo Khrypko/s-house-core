@@ -16,20 +16,17 @@ import java.util.logging.Logger;
 /**
  * Created by maks on 20.12.17.ddddddd
  */
-public class ControllerImpl implements Controller, RequestDispatcher{
+public class ControllerImpl implements Controller{
 
     //TODO: add logger
     private static final Logger LOGGER = Logger.getLogger(ControllerImpl.class.getName());
-    public static final String COULD_NOT_PROCESS_THE_REQUEST = "Could not process the request";
 
     private boolean running;
     private Set<Communicator> communicators;
-    private Set<RequestProcessor> processors;
     private Set<PacketProcessor> packetProcessors;
 
-    public ControllerImpl(Set<Communicator> communicators, Set<RequestProcessor> processors, Set<PacketProcessor> packetProcessors) {
+    public ControllerImpl(Set<Communicator> communicators, Set<PacketProcessor> packetProcessors) {
         this.communicators = communicators;
-        this.processors = processors;
         this.packetProcessors = packetProcessors;
     }
 
@@ -65,23 +62,4 @@ public class ControllerImpl implements Controller, RequestDispatcher{
                 .ifPresent( packetProcessor -> packetProcessor.processPacket(packet));
     }
 
-    @Override
-    public Message dispatchRequest(Request request){
-        return processors.stream()
-                .filter(processor -> processor.isApplicable(request))
-                .findAny()
-                .map(requestProcessor -> requestProcessor.processRequest(request))
-                .orElse(couldNotProcessRequest(request));
-    }
-
-    private Message couldNotProcessRequest(Request request) {
-        LOGGER.warning(COULD_NOT_PROCESS_THE_REQUEST.concat(". ").concat(request.toString()));
-        return Message.error(couldNotProcess());
-    }
-
-    private ResponseBody couldNotProcess() {
-        ResponseBody body = new ResponseBody();
-        body.put("message", COULD_NOT_PROCESS_THE_REQUEST);
-        return body;
-    }
 }
