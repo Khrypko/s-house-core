@@ -1,7 +1,7 @@
 package shouse.core.node;
 
 import shouse.core.communication.Packet;
-import shouse.core.node.request.NodeRequest;
+import shouse.core.node.request.Request;
 import shouse.core.node.response.Message;
 
 /**
@@ -10,7 +10,11 @@ import shouse.core.node.response.Message;
  */
 public interface Node {
 
-    Message process(NodeRequest request);
+    int getId();
+
+    NodeInfo getNodeInfo();
+
+    Message process(Request request);
 
     void update(Packet packet);
 

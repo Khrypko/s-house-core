@@ -1,6 +1,6 @@
 package shouse.core.api;
 
-import shouse.core.node.request.NodeRequest;
+import shouse.core.node.request.Request;
 import shouse.core.node.response.Message;
 
 /**
@@ -8,8 +8,8 @@ import shouse.core.node.response.Message;
  */
 public interface RequestProcessor {
 
-    Message processRequest(NodeRequest nodeRequest);
+    Message processRequest(Request request);
 
-    boolean isApplicable(NodeRequest nodeRequest);
+    boolean isApplicable(Request request);
 
 }

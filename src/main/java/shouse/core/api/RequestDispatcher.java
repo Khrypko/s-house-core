@@ -1,6 +1,6 @@
 package shouse.core.api;
 
-import shouse.core.node.request.NodeRequest;
+import shouse.core.node.request.Request;
 import shouse.core.node.response.Message;
 
 /**
@@ -8,6 +8,6 @@ import shouse.core.node.response.Message;
  */
 public interface RequestDispatcher {
 
-    Message processRequest(NodeRequest nodeRequest);
+    Message dispatchRequest(Request request);
 
 }

@@ -5,7 +5,7 @@ import shouse.core.api.Notifier;
 /**
  * Represents request format
  */
-public class NodeRequest {
+public class Request {
 
     private long nodeId;
     private Notifier notifier;
@@ -33,5 +33,13 @@ public class NodeRequest {
 
     public void setNotifier(Notifier notifier) {
         this.notifier = notifier;
+    }
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "nodeId=" + nodeId +
+                ", body=" + body.toString() +
+                '}';
     }
 }
