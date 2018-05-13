@@ -2,7 +2,6 @@ package shouse.core.api;
 
 import shouse.core.node.request.Request;
 import shouse.core.node.response.Message;
-import shouse.core.node.response.ResponseBody;
 
 import java.util.Set;
 import java.util.logging.Logger;
@@ -32,13 +31,7 @@ public class RequestDispatcherImpl implements RequestDispatcher {
 
     private Message couldNotProcessRequest(Request request) {
         LOGGER.warning(COULD_NOT_PROCESS_THE_REQUEST.concat(". ").concat(request.toString()));
-        return Message.error(couldNotProcess());
-    }
-
-    private ResponseBody couldNotProcess() {
-        ResponseBody body = new ResponseBody();
-        body.put("message", COULD_NOT_PROCESS_THE_REQUEST);
-        return body;
+        return Message.error(COULD_NOT_PROCESS_THE_REQUEST);
     }
 
 }
