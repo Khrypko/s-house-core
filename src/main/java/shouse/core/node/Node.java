@@ -8,14 +8,28 @@ import shouse.core.node.response.Message;
  * Core part.
  * Represents particular node. Implementations are responsible for all logic
  */
-public interface Node {
+public abstract class Node {
 
-    int getId();
+    private int id;
+    private int typeId;
 
-    NodeInfo getNodeInfo();
+    public Node(int id, int typeId) {
+        this.id = id;
+        this.typeId = typeId;
+    }
 
-    Message process(Request request);
+    public int getId(){
+        return id;
+    };
 
-    void update(Packet packet);
+    public int getTypeId(){
+        return typeId;
+    };
+
+    public abstract NodeInfo getNodeInfo();
+
+    public abstract Message process(Request request);
+
+    public abstract void update(Packet packet);
 
 }

@@ -45,7 +45,7 @@ public class ControllerImpl implements Controller{
         while (running){
             communicators.stream()
                     .filter(Communicator::hasNewPacket)
-                    .forEach(comm -> processPacket(comm.recivePacket()));
+                    .forEach(comm -> processPacket(comm.receivePacket()));
         }
     }
 

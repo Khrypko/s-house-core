@@ -7,7 +7,7 @@ public interface Communicator {
 
     void sendPacket(Packet packet);
 
-    Packet recivePacket();
+    Packet receivePacket();
 
     boolean hasNewPacket();
 

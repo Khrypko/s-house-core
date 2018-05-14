@@ -6,17 +6,14 @@ public class NodeInfo {
     private int nodeTypeId;
     private int nodeLocationId;
     private String description;
-
-    public NodeInfo(int id, int nodeTypeId) {
-        this.id = id;
-        this.nodeTypeId = nodeTypeId;
-    }
+    private boolean isActive;
 
     public NodeInfo(int id, int nodeTypeId, int nodeLocationId, String description) {
         this.id = id;
         this.nodeTypeId = nodeTypeId;
         this.nodeLocationId = nodeLocationId;
         this.description = description;
+        this.isActive = false;
     }
 
     public int getId() {
@@ -51,6 +48,14 @@ public class NodeInfo {
         this.nodeLocationId = nodeLocationId;
     }
 
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
     @Override
     public String toString() {
         return "NodeInfo{" +
@@ -58,6 +63,7 @@ public class NodeInfo {
                 ", nodeTypeId=" + nodeTypeId +
                 ", nodeLocationId=" + nodeLocationId +
                 ", description='" + description + '\'' +
+                ", isActive=" + isActive +
                 '}';
     }
 }
