@@ -2,7 +2,7 @@ package shouse.core.node;
 
 import shouse.core.communication.Packet;
 import shouse.core.node.request.Request;
-import shouse.core.node.response.Message;
+import shouse.core.node.response.Response;
 
 /**
  * Core part.
@@ -28,7 +28,7 @@ public abstract class Node {
 
     public abstract NodeInfo getNodeInfo();
 
-    public abstract Message process(Request request);
+    public abstract Response process(Request request);
 
     public abstract void update(Packet packet);
 

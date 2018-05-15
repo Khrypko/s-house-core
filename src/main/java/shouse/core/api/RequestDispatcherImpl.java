@@ -1,7 +1,7 @@
 package shouse.core.api;
 
 import shouse.core.node.request.Request;
-import shouse.core.node.response.Message;
+import shouse.core.node.response.Response;
 
 import java.util.Set;
 import java.util.logging.Logger;
@@ -21,7 +21,7 @@ public class RequestDispatcherImpl implements RequestDispatcher {
     }
 
     @Override
-    public Message dispatchRequest(Request request){
+    public Response dispatchRequest(Request request){
         return processors.stream()
                 .filter(processor -> processor.isApplicable(request))
                 .findAny()
@@ -29,9 +29,9 @@ public class RequestDispatcherImpl implements RequestDispatcher {
                 .orElseGet(() -> couldNotProcessRequest(request));
     }
 
-    private Message couldNotProcessRequest(Request request) {
+    private Response couldNotProcessRequest(Request request) {
         LOGGER.warning(COULD_NOT_PROCESS_THE_REQUEST.concat(". ").concat(request.toString()));
-        return Message.error(COULD_NOT_PROCESS_THE_REQUEST);
+        return Response.error(COULD_NOT_PROCESS_THE_REQUEST);
     }
 
 }

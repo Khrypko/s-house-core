@@ -1,21 +1,24 @@
 package shouse.core.node.response;
 
+import shouse.core.node.request.Request;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Defines structure for response
  */
-public class Message {
+public class Response {
 
     private long nodeId;
     private ResponseStatus status;
     private Map<String, Object> data = new HashMap<>();
+    private Request request;
 
-    public Message() {
+    public Response() {
     }
 
-    public Message(ResponseStatus status) {
+    public Response(ResponseStatus status) {
         this.status = status;
     }
 
@@ -35,8 +38,6 @@ public class Message {
         this.status = status;
     }
 
-
-
     public void put(String key, Object value){
         data.put(key, value);
     }
@@ -49,9 +50,16 @@ public class Message {
         this.data = data;
     }
 
+    public Request getRequest() {
+        return request;
+    }
 
-    public static Message error(String couse){
-        Message response = new Message();
+    public void setRequest(Request request) {
+        this.request = request;
+    }
+
+    public static Response error(String couse){
+        Response response = new Response();
         response.setStatus(ResponseStatus.FAILURE);
         response.put("error", couse);
         return response;

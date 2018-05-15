@@ -1,12 +1,12 @@
 package shouse.core.api;
 
-import shouse.core.node.response.Message;
+import shouse.core.node.response.Response;
 
 /**
  * Created by Maks on 11.05.2018.
  */
 public interface Notifier {
 
-    void sendResponse(Message message);
+    void sendResponse(Response response);
 
 }
