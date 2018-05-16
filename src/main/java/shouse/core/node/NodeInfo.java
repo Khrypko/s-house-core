@@ -16,6 +16,14 @@ public class NodeInfo {
         this.isActive = false;
     }
 
+    public NodeInfo(int id, int nodeTypeId, int nodeLocationId, String description, boolean isActive) {
+        this.id = id;
+        this.nodeTypeId = nodeTypeId;
+        this.nodeLocationId = nodeLocationId;
+        this.description = description;
+        this.isActive = isActive;
+    }
+
     public int getId() {
         return id;
     }

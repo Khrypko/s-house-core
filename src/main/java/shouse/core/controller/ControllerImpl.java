@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 /**
- * Created by maks on 20.12.17.ddddddd
+ * Created by maks on 20.12.17
  */
 public class ControllerImpl implements Controller{
 

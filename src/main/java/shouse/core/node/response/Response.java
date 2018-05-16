@@ -13,7 +13,6 @@ public class Response {
     private long nodeId;
     private ResponseStatus status;
     private Map<String, Object> data = new HashMap<>();
-    private Request request;
 
     public Response() {
     }
@@ -48,14 +47,6 @@ public class Response {
 
     public void setData(Map<String, Object> data) {
         this.data = data;
-    }
-
-    public Request getRequest() {
-        return request;
-    }
-
-    public void setRequest(Request request) {
-        this.request = request;
     }
 
     public static Response error(String couse){

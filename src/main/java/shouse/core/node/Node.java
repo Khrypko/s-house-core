@@ -12,24 +12,33 @@ public abstract class Node {
 
     private int id;
     private int typeId;
+    private boolean isActive;
 
-    public Node(int id, int typeId) {
+    public Node(int id, int typeId, boolean isActive) {
         this.id = id;
         this.typeId = typeId;
+        this.isActive = isActive;
     }
 
     public int getId(){
         return id;
-    };
+    }
 
     public int getTypeId(){
         return typeId;
-    };
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 
     public abstract NodeInfo getNodeInfo();
 
     public abstract Response process(Request request);
 
-    public abstract void update(Packet packet);
-
+    public abstract void processPacket(Packet packet);
 }
