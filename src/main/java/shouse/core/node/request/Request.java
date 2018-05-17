@@ -11,6 +11,13 @@ public class Request {
     private Notifier notifier;
     private RequestBody body;
 
+    public Request () {}
+
+    public Request (String paramKey, String paramValue){
+        body = new RequestBody();
+        body.addParameter(paramKey, paramValue);
+    }
+
     public long getNodeId() {
         return nodeId;
     }

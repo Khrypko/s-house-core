@@ -1,5 +1,6 @@
 package shouse.core.node.request;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -26,5 +27,10 @@ public class RequestBody {
 
     public void setParameters(Map<String, String> parameters) {
         this.parameters = parameters;
+    }
+
+    public void addParameter(String paramKey, String paramValue){
+        parameters = new HashMap<>();
+        parameters.put(paramKey, paramValue);
     }
 }
