@@ -11,9 +11,7 @@ import java.util.logging.Logger;
  * Created by maks on 20.12.17
  */
 public class ControllerImpl implements Controller{
-
-    //TODO: add logger
-    private static final Logger LOGGER = Logger.getLogger(ControllerImpl.class.getName());
+    private static final Logger log = Logger.getLogger(ControllerImpl.class.getName());
 
     private boolean running;
     private Set<Communicator> communicators;
@@ -41,6 +39,7 @@ public class ControllerImpl implements Controller{
 
     @Override
     public void run() {
+        log.info("run. ");
         running = true;
         while (running){
             communicators.stream()

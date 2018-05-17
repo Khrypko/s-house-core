@@ -32,8 +32,8 @@ public enum NodeType {
         return name;
     }
 
-    public static List<String> getNames(){
-        return Arrays.asList(values()).stream().map(e -> e.name).collect(Collectors.toList());
+    public static List<NodeTypeWrapper> getTypes(){
+        return Arrays.asList(values()).stream().map(e -> new NodeTypeWrapper(e.id, e.name)).collect(Collectors.toList());
     }
 
     @Override
