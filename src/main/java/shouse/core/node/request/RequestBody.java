@@ -30,7 +30,9 @@ public class RequestBody {
     }
 
     public void addParameter(String paramKey, String paramValue){
-        parameters = new HashMap<>();
+        if(parameters == null)
+            parameters = new HashMap<>();
+
         parameters.put(paramKey, paramValue);
     }
 }

@@ -18,6 +18,13 @@ public class Request {
         body.addParameter(paramKey, paramValue);
     }
 
+    public void addParameter(String paramKey, String paramValue){
+        if(body == null)
+            body = new RequestBody();
+
+        body.addParameter(paramKey, paramValue);
+    }
+
     public long getNodeId() {
         return nodeId;
     }
