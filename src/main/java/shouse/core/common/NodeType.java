@@ -1,4 +1,4 @@
-package shouse.core.Common;
+package shouse.core.common;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,8 +32,8 @@ public enum NodeType {
         return name;
     }
 
-    public static List<NodeTypeWrapper> getTypes(){
-        return Arrays.asList(values()).stream().map(e -> new NodeTypeWrapper(e.id, e.name)).collect(Collectors.toList());
+    public static List<NodeTypeInfo> getTypes(){
+        return Arrays.asList(values()).stream().map(e -> new NodeTypeInfo(e.id, e.name)).collect(Collectors.toList());
     }
 
     @Override

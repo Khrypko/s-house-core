@@ -1,4 +1,4 @@
-package shouse.core.Common;
+package shouse.core.common;
 
 public class SystemConstants {
 

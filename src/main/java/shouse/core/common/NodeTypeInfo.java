@@ -1,11 +1,11 @@
-package shouse.core.Common;
+package shouse.core.common;
 
-public class NodeTypeWrapper {
+public class NodeTypeInfo {
 
     private int nodeTypeId;
     private String nodeTypeName;
 
-    public NodeTypeWrapper(int nodeTypeId, String nodeTypeName) {
+    public NodeTypeInfo(int nodeTypeId, String nodeTypeName) {
         this.nodeTypeId = nodeTypeId;
         this.nodeTypeName = nodeTypeName;
     }
