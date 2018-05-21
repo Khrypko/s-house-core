@@ -11,21 +11,26 @@ import shouse.core.node.response.Response;
 public abstract class Node {
 
     private int id;
-    private int typeId;
+    private NodeLocation nodeLocation;
+    private String typeName;
     private boolean isActive;
 
-    public Node(int id, int typeId, boolean isActive) {
+    public Node(int id, NodeLocation nodeLocation) {
         this.id = id;
-        this.typeId = typeId;
-        this.isActive = isActive;
+        this.nodeLocation = nodeLocation;
+        this.isActive = false;
     }
 
     public int getId(){
         return id;
     }
 
-    public int getTypeId(){
-        return typeId;
+    public String getTypeName(){
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
     public boolean isActive() {
@@ -41,4 +46,8 @@ public abstract class Node {
     public abstract Response process(Request request);
 
     public abstract void processPacket(Packet packet);
+
+    public NodeLocation getNodeLocation() {
+        return nodeLocation;
+    }
 }

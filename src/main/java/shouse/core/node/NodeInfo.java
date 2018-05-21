@@ -3,23 +3,23 @@ package shouse.core.node;
 public class NodeInfo {
 
     private int id;
-    private int nodeTypeId;
-    private int nodeLocationId;
+    private String nodeTypeName;
+    private NodeLocation nodeLocation;
     private String description;
     private boolean isActive;
 
-    public NodeInfo(int id, int nodeTypeId, int nodeLocationId, String description) {
+    public NodeInfo(int id, String nodeTypeName, NodeLocation nodeLocation, String description) {
         this.id = id;
-        this.nodeTypeId = nodeTypeId;
-        this.nodeLocationId = nodeLocationId;
+        this.nodeTypeName = nodeTypeName;
+        this.nodeLocation = nodeLocation;
         this.description = description;
         this.isActive = false;
     }
 
-    public NodeInfo(int id, int nodeTypeId, int nodeLocationId, String description, boolean isActive) {
+    public NodeInfo(int id, String nodeTypeName, NodeLocation nodeLocation, String description, boolean isActive) {
         this.id = id;
-        this.nodeTypeId = nodeTypeId;
-        this.nodeLocationId = nodeLocationId;
+        this.nodeTypeName = nodeTypeName;
+        this.nodeLocation = nodeLocation;
         this.description = description;
         this.isActive = isActive;
     }
@@ -32,12 +32,12 @@ public class NodeInfo {
         this.id = id;
     }
 
-    public int getNodeTypeId() {
-        return nodeTypeId;
+    public String getNodeTypeName() {
+        return nodeTypeName;
     }
 
-    public void setNodeTypeId(int nodeTypeId) {
-        this.nodeTypeId = nodeTypeId;
+    public void setNodeTypeName(String nodeTypeName) {
+        this.nodeTypeName = nodeTypeName;
     }
 
     public String getDescription() {
@@ -48,12 +48,12 @@ public class NodeInfo {
         this.description = description;
     }
 
-    public int getNodeLocationId() {
-        return nodeLocationId;
+    public NodeLocation getNodeLocation() {
+        return nodeLocation;
     }
 
-    public void setNodeLocationId(int nodeLocationId) {
-        this.nodeLocationId = nodeLocationId;
+    public void setNodeLocation(NodeLocation nodeLocation) {
+        this.nodeLocation = nodeLocation;
     }
 
     public boolean isActive() {
@@ -68,8 +68,8 @@ public class NodeInfo {
     public String toString() {
         return "NodeInfo{" +
                 "id=" + id +
-                ", nodeTypeId=" + nodeTypeId +
-                ", nodeLocationId=" + nodeLocationId +
+                ", nodeTypeName='" + nodeTypeName + '\'' +
+                ", nodeLocation=" + nodeLocation +
                 ", description='" + description + '\'' +
                 ", isActive=" + isActive +
                 '}';
