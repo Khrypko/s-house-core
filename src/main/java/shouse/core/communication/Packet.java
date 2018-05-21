@@ -28,4 +28,11 @@ public class Packet {
         this.data.put(key, val);
     }
 
+    @Override
+    public String toString() {
+        return "Packet{" +
+                "nodeId=" + nodeId +
+                ", data=" + data +
+                '}';
+    }
 }
