@@ -22,6 +22,7 @@ public class RequestDispatcherImpl implements RequestDispatcher {
 
     @Override
     public Response dispatchRequest(Request request){
+        LOGGER.info("Start process request: ".concat(request.toString()));
         return processors.stream()
                 .filter(processor -> processor.isApplicable(request))
                 .findAny()

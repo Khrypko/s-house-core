@@ -14,8 +14,7 @@ public class Response {
     private ResponseStatus status;
     private Map<String, Object> data = new HashMap<>();
 
-    public Response() {
-    }
+    public Response() {}
 
     public Response(ResponseStatus status) {
         this.status = status;
@@ -54,5 +53,14 @@ public class Response {
         response.setStatus(ResponseStatus.FAILURE);
         response.put("error", couse);
         return response;
+    }
+
+    @Override
+    public String toString() {
+        return "Response{" +
+                "nodeId=" + nodeId +
+                ", status=" + status +
+                ", data=" + data +
+                '}';
     }
 }

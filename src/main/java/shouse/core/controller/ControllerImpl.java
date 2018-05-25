@@ -39,7 +39,7 @@ public class ControllerImpl implements Controller{
 
     @Override
     public void run() {
-        log.info("run. ");
+        log.info("Nodes packets processor is running.");
         running = true;
         while (running){
             communicators.stream()
@@ -49,6 +49,7 @@ public class ControllerImpl implements Controller{
     }
 
     private void processPacket(Packet packet) {
+        log.info("Packet received.");
         packetProcessors.stream()
                 .filter(processor -> processor.isApplicable(packet))
                 .findAny()

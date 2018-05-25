@@ -2,6 +2,8 @@ package shouse.core.node.request;
 
 import shouse.core.api.Notifier;
 
+import java.util.Map;
+
 /**
  * Represents request format
  */
@@ -16,6 +18,11 @@ public class Request {
     public Request (String paramKey, String paramValue){
         body = new RequestBody();
         body.addParameter(paramKey, paramValue);
+    }
+
+    public Request (Map<String,String> params){
+        body = new RequestBody();
+        body.setParameters(params);
     }
 
     public void addParameter(String paramKey, String paramValue){
