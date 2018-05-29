@@ -4,7 +4,7 @@ import shouse.core.node.request.Request;
 import shouse.core.node.response.Response;
 
 /**
- * Should delegate processing of request to concrete node
+ * Should delegate processing of request to concrete node.
  */
 public interface RequestProcessor {
 
