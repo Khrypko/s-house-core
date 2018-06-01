@@ -7,6 +7,7 @@ public class NodeInfo {
     private NodeLocation nodeLocation;
     private String description;
     private boolean isActive;
+    private boolean inProcess = false;
 
     public NodeInfo(int id, String nodeTypeName, NodeLocation nodeLocation, String description) {
         this.id = id;
@@ -64,6 +65,14 @@ public class NodeInfo {
         isActive = active;
     }
 
+    public boolean isInProcess() {
+        return inProcess;
+    }
+
+    public void setInProcess(boolean inProcess) {
+        this.inProcess = inProcess;
+    }
+
     @Override
     public String toString() {
         return "NodeInfo{" +
@@ -72,6 +81,7 @@ public class NodeInfo {
                 ", nodeLocation=" + nodeLocation +
                 ", description='" + description + '\'' +
                 ", isActive=" + isActive +
+                ", inProcess=" + inProcess +
                 '}';
     }
 }
