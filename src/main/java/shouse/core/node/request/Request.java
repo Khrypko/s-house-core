@@ -8,6 +8,8 @@ import java.util.Map;
  * Represents request format
  */
 public class Request {
+    public static final String NODE_TYPE_NAME = "nodeTypeName";
+    public static final String NODE_ID = "nodeId";
 
     private long nodeId;
     private Notifier notifier;

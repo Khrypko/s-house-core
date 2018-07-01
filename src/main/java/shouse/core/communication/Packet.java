@@ -8,6 +8,8 @@ import java.util.Map;
  */
 public class Packet {
 
+    public static final String NODE_TYPE_NAME = "nodeTypeName";
+
     private int nodeId;
     private Map<String, String> data;
 
