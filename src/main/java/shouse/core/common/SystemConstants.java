@@ -6,4 +6,5 @@ public class SystemConstants {
     public static String executionStatus = "execution_status";
     public static String failureMessage = "failure_message";
     public static String nodeTaskStatus = "node_task_status";
+    public static String nodeId = "node_id";
 }

@@ -9,7 +9,6 @@ import java.util.Map;
  */
 public class Request {
 
-    private long nodeId;
     private Notifier notifier;
     private RequestBody body;
 
@@ -32,14 +31,6 @@ public class Request {
         body.addParameter(paramKey, paramValue);
     }
 
-    public long getNodeId() {
-        return nodeId;
-    }
-
-    public void setNodeId(long nodeId) {
-        this.nodeId = nodeId;
-    }
-
     public RequestBody getBody() {
         return body;
     }
@@ -59,7 +50,6 @@ public class Request {
     @Override
     public String toString() {
         return "Request{" +
-                "nodeId=" + nodeId +
                 ", body=" + body.toString() +
                 '}';
     }

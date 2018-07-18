@@ -1,7 +1,5 @@
 package shouse.core.node.response;
 
-import shouse.core.node.request.Request;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +8,6 @@ import java.util.Map;
  */
 public class Response {
 
-    private long nodeId;
     private ResponseStatus status;
     private Map<String, Object> data = new HashMap<>();
 
@@ -18,14 +15,6 @@ public class Response {
 
     public Response(ResponseStatus status) {
         this.status = status;
-    }
-
-    public long getNodeId() {
-        return nodeId;
-    }
-
-    public void setNodeId(long nodeId) {
-        this.nodeId = nodeId;
     }
 
     public ResponseStatus getStatus() {
@@ -58,7 +47,6 @@ public class Response {
     @Override
     public String toString() {
         return "Response{" +
-                "nodeId=" + nodeId +
                 ", status=" + status +
                 ", data=" + data +
                 '}';
