@@ -4,6 +4,9 @@ import shouse.core.communication.Packet;
 import shouse.core.node.request.Request;
 import shouse.core.node.response.Response;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 /**
  * Core part.
  * Represents particular node. Implementations are responsible for all logic
@@ -14,6 +17,7 @@ public abstract class Node {
     private NodeLocation nodeLocation;
     private String typeName;
     private boolean isActive;
+    private LocalDateTime lastAliveDate;
 
     public Node(int id, NodeLocation nodeLocation) {
         this.id = id;
@@ -49,5 +53,13 @@ public abstract class Node {
 
     public NodeLocation getNodeLocation() {
         return nodeLocation;
+    }
+
+    public LocalDateTime getLastAliveDate() {
+        return lastAliveDate;
+    }
+
+    public void setLastAliveDate(LocalDateTime lastAliveDate) {
+        this.lastAliveDate = lastAliveDate;
     }
 }
