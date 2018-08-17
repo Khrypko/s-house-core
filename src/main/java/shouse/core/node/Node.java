@@ -5,7 +5,6 @@ import shouse.core.node.request.Request;
 import shouse.core.node.response.Response;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * Core part.
