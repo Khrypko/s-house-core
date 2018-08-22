@@ -42,7 +42,7 @@ public class NodeLoader {
                 Constructor constructor =  aClass.getConstructor();
                 return (NodeFactory) constructor.newInstance();
             } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
-                throw new RuntimeException("Impossible to instantiate Node Factory. Class must have no argugents constructor", e);
+                throw new RuntimeException("Impossible to instantiate Node Factory. Class must have no arguments constructor", e);
             }
         }
 
