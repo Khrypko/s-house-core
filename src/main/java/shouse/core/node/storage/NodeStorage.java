@@ -9,5 +9,4 @@ import java.util.Map;
 public interface NodeStorage {
 
     List<Node> loadNodes(Map<String, NodeFactory> blueprints);
-
 }

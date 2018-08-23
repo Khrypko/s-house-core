@@ -13,9 +13,9 @@ import java.util.Set;
 /**
  * Created by Maks on 01.07.2018.
  */
-public interface NodeFactory {
+public interface NodeFactory<T> {
 
-    Node createNode(Map<String, Object> details);
+    Node createNode(T details);
 
     RequestProcessor getRequestProcessor(NodeContainer nodeContainer);
 
