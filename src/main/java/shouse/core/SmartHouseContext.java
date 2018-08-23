@@ -3,7 +3,7 @@ package shouse.core;
 import shouse.core.api.Notifier;
 import shouse.core.api.RequestDispatcher;
 import shouse.core.api.RequestProcessor;
-import shouse.core.communication.Communicator;
+import shouse.core.communication.NodeCommunicator;
 import shouse.core.communication.PacketProcessor;
 import shouse.core.controller.Controller;
 import shouse.core.controller.NodeContainer;
@@ -23,7 +23,7 @@ public class SmartHouseContext {
     private Set<Notifier> notifiers;
 
     private Set<PacketProcessor> packetProcessors;
-    private Set<Communicator> communicators;
+    private Set<NodeCommunicator> nodeCommunicators;
 
     private Controller controller;
     private NodeContainer nodeContainer;
@@ -74,12 +74,12 @@ public class SmartHouseContext {
         packetProcessors.add(processor);
     }
 
-    public Set<Communicator> getCommunicators() {
-        return communicators;
+    public Set<NodeCommunicator> getNodeCommunicators() {
+        return nodeCommunicators;
     }
 
-    public void setCommunicators(Set<Communicator> communicators) {
-        this.communicators = communicators;
+    public void setNodeCommunicators(Set<NodeCommunicator> nodeCommunicators) {
+        this.nodeCommunicators = nodeCommunicators;
     }
 
     public Controller getController() {

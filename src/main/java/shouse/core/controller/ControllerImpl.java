@@ -1,6 +1,6 @@
 package shouse.core.controller;
 
-import shouse.core.communication.Communicator;
+import shouse.core.communication.NodeCommunicator;
 import shouse.core.communication.Packet;
 import shouse.core.communication.PacketProcessor;
 
@@ -14,11 +14,11 @@ public class ControllerImpl implements Controller{
     private static final Logger log = Logger.getLogger(ControllerImpl.class.getName());
 
     private boolean running;
-    private Set<Communicator> communicators;
+    private Set<NodeCommunicator> nodeCommunicators;
     private Set<PacketProcessor> packetProcessors;
 
-    public ControllerImpl(Set<Communicator> communicators, Set<PacketProcessor> packetProcessors) {
-        this.communicators = communicators;
+    public ControllerImpl(Set<NodeCommunicator> nodeCommunicators, Set<PacketProcessor> packetProcessors) {
+        this.nodeCommunicators = nodeCommunicators;
         this.packetProcessors = packetProcessors;
     }
 
@@ -42,8 +42,8 @@ public class ControllerImpl implements Controller{
         log.info("Nodes packets processor is running.");
         running = true;
         while (running){
-            communicators.stream()
-                    .filter(Communicator::hasNewPacket)
+            nodeCommunicators.stream()
+                    .filter(NodeCommunicator::hasNewPacket)
                     .forEach(comm -> processPacket(comm.receivePacket()));
         }
     }

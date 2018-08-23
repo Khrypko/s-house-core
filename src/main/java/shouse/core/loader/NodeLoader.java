@@ -2,7 +2,7 @@ package shouse.core.loader;
 
 import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import shouse.core.api.Notifier;
-import shouse.core.communication.Communicator;
+import shouse.core.communication.NodeCommunicator;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -14,11 +14,11 @@ import java.util.stream.Collectors;
  */
 public class NodeLoader {
 
-    private Set<Communicator> communicators;
+    private Set<NodeCommunicator> nodeCommunicators;
     private Set<Notifier> notifiers;
 
-    public NodeLoader(Set<Communicator> communicators, Set<Notifier> notifiers) {
-        this.communicators = communicators;
+    public NodeLoader(Set<NodeCommunicator> nodeCommunicators, Set<Notifier> notifiers) {
+        this.nodeCommunicators = nodeCommunicators;
         this.notifiers = notifiers;
     }
 
@@ -50,7 +50,7 @@ public class NodeLoader {
     }
 
     private NodeFactory actualizeFactory(NodeFactory factory) {
-        factory.setCommunicators(communicators);
+        factory.setNodeCommunicators(nodeCommunicators);
         factory.setNotifiers(notifiers);
         return factory;
     }

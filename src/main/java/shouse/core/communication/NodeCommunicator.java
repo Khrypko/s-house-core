@@ -3,7 +3,7 @@ package shouse.core.communication;
 /**
  * Hides communication between system and hardware
  */
-public interface Communicator {
+public interface NodeCommunicator {
 
     void sendPacket(Packet packet);
 

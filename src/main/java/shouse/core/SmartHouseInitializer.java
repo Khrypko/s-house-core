@@ -4,7 +4,7 @@ import shouse.core.api.Notifier;
 import shouse.core.api.RequestDispatcher;
 import shouse.core.api.RequestDispatcherImpl;
 import shouse.core.api.RequestProcessor;
-import shouse.core.communication.Communicator;
+import shouse.core.communication.NodeCommunicator;
 import shouse.core.communication.PacketProcessor;
 import shouse.core.controller.Controller;
 import shouse.core.controller.ControllerImpl;
@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class SmartHouseInitializer {
 
     private Set<Notifier> notifiers;
-    private Set<Communicator> communicators;
+    private Set<NodeCommunicator> nodeCommunicators;
     private NodeStorage nodeStorage;
     private Set<RequestProcessor> requestProcessors;
     private Set<PacketProcessor> packetProcessors;
@@ -35,8 +35,8 @@ public class SmartHouseInitializer {
         return this;
     }
 
-    public SmartHouseInitializer communicators(Set<Communicator> communicators) {
-        this.communicators = communicators;
+    public SmartHouseInitializer communicators(Set<NodeCommunicator> nodeCommunicators) {
+        this.nodeCommunicators = nodeCommunicators;
         return this;
     }
 
@@ -57,11 +57,11 @@ public class SmartHouseInitializer {
 
     public SmartHouseContext initialize(){
         if (notifiersEmpty() || communicatorsEmpty() || nodeStorageNotSet()){
-            throw new RuntimeException("Notifiers or communicators are not set!");
+            throw new RuntimeException("Notifiers or nodeCommunicators are not set!");
         }
 
         SmartHouseContext context = new SmartHouseContext();
-        context.setCommunicators(communicators);
+        context.setNodeCommunicators(nodeCommunicators);
         context.setNotifiers(notifiers);
         loadNodes(context);
         setUpNodeContainer(context);
@@ -78,7 +78,7 @@ public class SmartHouseInitializer {
 
 
     private boolean communicatorsEmpty() {
-        return communicators == null || communicators.isEmpty();
+        return nodeCommunicators == null || nodeCommunicators.isEmpty();
     }
 
     private boolean notifiersEmpty() {
@@ -86,7 +86,7 @@ public class SmartHouseInitializer {
     }
 
     private void loadNodes(SmartHouseContext context) {
-        NodeLoader nodeLoader = new NodeLoader(communicators, notifiers);
+        NodeLoader nodeLoader = new NodeLoader(nodeCommunicators, notifiers);
         Map<String, NodeFactory> blueprints = nodeLoader.loadNodes();
         context.setNodeBlueprints(blueprints);
     }
@@ -117,7 +117,7 @@ public class SmartHouseInitializer {
     }
 
     private void initializeController(SmartHouseContext context) {
-        Controller controller = new ControllerImpl(communicators, context.getPacketProcessors());
+        Controller controller = new ControllerImpl(nodeCommunicators, context.getPacketProcessors());
         context.setController(controller);
     }
 
