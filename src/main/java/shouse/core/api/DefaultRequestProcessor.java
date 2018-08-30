@@ -23,7 +23,7 @@ public class DefaultRequestProcessor implements RequestProcessor{
     @Override
     public Response processRequest(Request request) {
         return nodeContainer.getNode(getNodeIdFromRequest(request))
-                .map(node -> node.process(request))
+                .map(node -> node.processRequest(request))
                 .orElse(nodeNotFoundResponse());
     }
 

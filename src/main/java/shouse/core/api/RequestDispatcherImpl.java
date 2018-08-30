@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class RequestDispatcherImpl implements RequestDispatcher {
 
     private static final Logger LOGGER = Logger.getLogger(RequestDispatcherImpl.class.getName());
-    private static final String COULD_NOT_PROCESS_THE_REQUEST = "Could not process the request";
+    private static final String COULD_NOT_PROCESS_THE_REQUEST = "Could not processRequest the request";
 
     private Set<RequestProcessor> processors;
 
@@ -22,7 +22,7 @@ public class RequestDispatcherImpl implements RequestDispatcher {
 
     @Override
     public Response dispatchRequest(Request request){
-        LOGGER.info("Start process request: ".concat(request.toString()));
+        LOGGER.info("Start processRequest request: ".concat(request.toString()));
         return processors.stream()
                 .filter(processor -> processor.isApplicable(request))
                 .findAny()
