@@ -11,4 +11,6 @@ public class SystemConstants {
     public static String topic = "topic";
     public static String nodeAliveTopic = "node_alive_topic";
     public static String nodeAliveState = "node_alive_state";
+
+    public static String nodeEventTopic = "node_event_topic";
 }
